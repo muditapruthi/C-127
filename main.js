@@ -22,6 +22,23 @@ function setup() {
 function modelLoaded() {
     console.log('posenet is initalized');
 }
+function gotPoses(results)
+{
+    if(results.length>0)
+{
+    scoreRightWrist=results[0].pose.keypoints[10].score;
+    scoreLeftWrist=results[0].pose.keypoints[9].score;
+    console.log("rightwristX= " + scoreRightWrist + "scoreLeftWrist= " + scoreLeftWrist);
+
+    rightWristX=results[0].pose.rightWrist.X;
+    rightWristY=results[0].pose.rightWrist.X;
+    console.log("rightwristX= " + rightWristX + "rightWristY = " +rightwristY);
+
+    leftWristX=results[0].pose.leftWrist.X;
+    leftWristY=results[0].pose.leftWrist.X;
+    console.log("leftwristX= " + leftWristX + "leftWristY = " +leftwristY);  
+}
+}
 function draw() {
     Image(video,0,0,600,500);
 }
